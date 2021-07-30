@@ -36,8 +36,8 @@ const App = () => {
 
     setQuestions(questions)
     setCurrentQuestion(0)
-    setScore(0)
     setUserAnswers([])
+    setScore(0)
     setLoading(false)
   }
 
@@ -52,14 +52,9 @@ const App = () => {
         question: questions[currentQuestion].question,
       }
 
+      if (isCorrect) setScore(prev => prev + 1)
       setUserAnswers(prev => [...prev, userAnswer])
     }
-  }
-
-  const nextQuestion = () => {
-    if (userAnswers[currentQuestion].correct) setScore(prev => prev + 1)
-
-    setCurrentQuestion(prev => prev + 1)
   }
 
   useEffect(() => {
@@ -74,7 +69,7 @@ const App = () => {
       <GlobalStyle />
       <Wrapper>
         <h1>{gameOver ? 'Game over' : 'Quiz'}</h1>
-        <p className="score">{gameOver ? 'Final score' : 'Score'}: {score}</p>
+        {(quizInProgress || gameOver) && <p className="score">{gameOver ? 'Final score' : 'Score'}:&nbsp;{score}</p>}
         {!quizInProgress && <button className="start-button" onClick={startTrivia}>{gameOver ? 'Play again' : 'Start'}</button>}
         {loading && <p>Loading questions...</p>}
         {!loading && (quizInProgress || gameOver) && <QuestionCard
@@ -88,7 +83,7 @@ const App = () => {
         {quizInProgress && !loading && !isOnLastQuestion && <button
           disabled={!hasAnswered}
           className='next-button'
-          onClick={nextQuestion}
+          onClick={() => setCurrentQuestion(prev => prev + 1)}
         >
           Next question
         </button>}
