@@ -68,7 +68,7 @@ const App = () => {
     <div className="App">
       <GlobalStyle />
       <Wrapper>
-        <h1>{gameOver ? 'Game over' : 'Quiz'}</h1>
+        <h1>{gameOver ? 'Game over' : 'DUMBO'}</h1>
         {(quizInProgress || gameOver) && <p className="score">{gameOver ? 'Final score' : 'Score'}:&nbsp;{score}</p>}
         {!quizInProgress && <button className="start-button" onClick={startTrivia}>{gameOver ? 'Play again' : 'Start'}</button>}
         {loading && <p>Loading questions...</p>}
