@@ -15,3 +15,8 @@ export type Answer = {
   correct: boolean;
   correctAnswer: string;
 }
+
+export type ButtonWrapperProps = {
+  isCorrect: boolean;
+  isClicked: boolean;
+}

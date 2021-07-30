@@ -1,11 +1,12 @@
 {
-  "rules": {"indent": [
-    true, "spaces", 2],
+  "rules": {
+    "indent": [true, "spaces", 2],
     "no-trailing-whitespace": [true],
     "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
     "semicolon": [true, "never"],
     "object-literal-sort-keys": true,
     "no-consecutive-blank-lines": true,
-    "no-console": [true, "log", "error"]
+    "no-console": [true, "log", "error"],
+    "whitespace": [true, "check-branch", "check-operator", "check-typecast", "check-separator"]
   }
 }
